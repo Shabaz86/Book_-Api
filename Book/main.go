@@ -51,7 +51,6 @@ func getBook(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	// If the book with the specified ID is not found, return a 404 Not Found status
 	w.WriteHeader(http.StatusNotFound)
 }
 
@@ -65,13 +64,8 @@ func createBook(w http.ResponseWriter, r *http.Request) {
 }
 
 func updateBook(w http.ResponseWriter, r *http.Request) {
-	// Set JSON content type
 	w.Header().Set("Content-Type", "application/json")
-	// Params
 	params := mux.Vars(r)
-	// Loop over the books, range
-	// Delete the book with the ID that you've sent
-	// Add a new book - the book that we send in the body of Postman
 	for index, item := range books {
 		if item.ID == params["id"] {
 			books = append(books[:index], books[index+1:]...)
@@ -83,7 +77,6 @@ func updateBook(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	// If the book with the specified ID is not found, return a 404 Not Found status
 	w.WriteHeader(http.StatusNotFound)
 }
 
